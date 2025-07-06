@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chatbot | Hotel </title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at center, #0f0f0f 0%, #000000 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      position: relative;
+      z-index: 10;
+    }
+
+    .right-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .card {
+      border-radius: 24px;
+      padding: 30px 25px;
+      width: 280px;
+      position: relative;
+      background: rgba(10, 10, 30, 0.7);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+
+    .card.login-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    @keyframes floatBot {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    .robot-image {
+      width: 120px;
+      height: auto;
+      margin-bottom: 20px;
+      animation: floatBot 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 10px #0ff);
+    }
+
+    .login-card .title {
+      font-size: 1.6em;
+      font-weight: bold;
+      color: #00ffe7;
+      text-shadow: 0 0 5px #00ffe7;
+      margin-bottom: 8px;
+    }
+
+    .login-card .subtitle {
+      font-size: 0.95em;
+      color: #c0f0ff;
+      margin-bottom: 25px;
+    }
+
+    .start-button {
+      background-color: #00f0ff;
+      color: #000;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      font-size: 1.6em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 0 12px #00f0ff, 0 0 24px #00f0ff;
+    }
+
+    .start-button:hover {
+      background-color: #00e0ff;
+      transform: scale(1.1);
+      box-shadow: 0 0 16px #00e0ff, 0 0 32px #00e0ff;
+    }
+
+    .sphere {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, #ff00ff, #00ffff);
+      border-radius: 50%;
+      bottom: -80px;
+      right: -80px;
+      z-index: 1;
+      filter: blur(80px);
+      opacity: 0.4;
+    }
+
+    .time-greeting-card {
+      background: rgba(20, 20, 40, 0.8);
+      border: 1px solid #00ffcc;
+      color: #00ffcc;
+      border-radius: 24px;
+      padding: 20px;
+      width: 260px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+    }
+
+    .time-greeting-card .time {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-shadow: 0 0 8px #0ff;
+    }
+
+    .time-greeting-card .date {
+      font-size: 0.9em;
+      color: #66ffe8;
+      margin-bottom: 12px;
+    }
+
+    .time-greeting-card .greeting {
+      font-size: 0.95em;
+      color: #99ffdd;
+    }
+
+    .discover-card {
+      background: rgba(255, 0, 255, 0.1);
+      color: #ff66ff;
+      border-radius: 20px;
+      width: 260px;
+      padding: 20px 25px;
+      text-align: left;
+      box-shadow: 0 0 10px rgba(255, 0, 255, 0.4);
+      border: 1px solid rgba(255, 0, 255, 0.2);
+    }
+
+    .discover-card h4 {
+      margin-bottom: 6px;
+      font-size: 1.1em;
+      color: #ff99ff;
+      text-shadow: 0 0 6px #ff33ff;
+    }
+
+    .discover-card p {
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="sphere"></div>
+  <div class="container">
+
+    <!-- Left card with chatbot welcome -->
+    <div class="card login-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="Chatbot Robot" class="robot-image" />
+      <h2 class="title">Welcome to Hotel MARLOO</h2>
+      <p class="subtitle">I'm your virtual assistant. Tap to chat!</p>
+      <a href="/index" class="start-button" title="Start Chatbot">→</a>
+    </div>
+
+    <!-- Right section with time and greeting -->
+    <div class="right-section">
+      <div class="time-greeting-card">
+        <div class="time">--:--</div>
+        <div class="date">Loading...</div>
+        <div class="greeting">👋</div>
+      </div>
+
+      <div class="discover-card">
+        <h4>🏨 Welcome</h4>
+        <p>Welcome to the hotel. We hope you enjoy your stay!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript for dynamic time and greeting -->
+  <script>
+    function updateTimeGreeting() {
+      const timeEl = document.querySelector('.time-greeting-card .time');
+      const dateEl = document.querySelector('.time-greeting-card .date');
+      const greetingEl = document.querySelector('.time-greeting-card .greeting');
+
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      timeEl.textContent = `${hours.toString().padStart(2, '0')}:${minutes}`;
+
+      const options = { weekday: 'long', month: 'long', day: 'numeric' };
+      dateEl.textContent = now.toLocaleDateString(undefined, options);
+
+      let greeting = "👋 Hello";
+      if (hours < 12) greeting = "☀️ Good morning";
+      else if (hours < 18) greeting = "🌤️ Good afternoon";
+      else greeting = "🌙 Good evening";
+      greetingEl.textContent = greeting;
+    }
+
+    updateTimeGreeting();
+    setInterval(updateTimeGreeting, 60000);
+  </script>
+</body>
+</html>
